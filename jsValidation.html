@@ -1,0 +1,179 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Untitled Document</title>
+<style type="text/css">
+#msg,#msg2,#msg3,#msg4
+{
+	font-family:Verdana, Geneva, sans-serif;
+	font-size:9px;
+	color:#F00;
+}
+.hell,.pass
+{
+	margin-top: 10px;
+	padding: 18px;
+	height: 4px;
+	font-family: "Courier New", Courier, monospace;
+	width: 90px;
+	border-radius: 50px;
+}
+.age
+{
+	position:absolute;
+	padding:18px;
+	height:4px;
+	font-family:"Courier New", Courier, monospace;
+	width:90px;
+	border-radius:50px;
+	font-size:9px
+}
+
+.field
+{
+	box-shadow:#336 2px 2px 2px;
+	width:40%;
+	margin-top:120px;
+	border-radius:10px;
+}
+
+.btn
+{
+	height:30px;
+	width:70px;
+	border-radius:4px;
+	background:#33F;
+	color:#FFF;
+	border-color:#33F;
+}
+
+.btn:hover
+{
+	background-color:#FFF;
+	border:solid 1px thin #33F;
+	color:#33F;
+	transition:ease-in 0.4s;
+	transition:ease-out 0.4s;
+	cursor:not-allowed;
+}
+
+.texts
+{
+	font-size:14px bold #33F;
+}
+	
+</style>
+<script type="text/javascript">
+var txt=document.getElementById("firstname").length;
+
+function blurfxn()
+{
+	if(myform.elements.firstname.value.length < 3)
+	{
+	var div=document.getElementById("msg");
+	div.innerHTML='Minimus  character required, you have entered only '+firstname.value.length;
+
+	document.getElementById("firstname").style.borderBottomColor="red";
+	}
+	else
+	{
+		var div=document.getElementById("msg");
+		div.style.display='none';
+		div.style.visibility='hidden';
+		document.getElementById("firstname").style.borderBottomColor="blue";
+	}
+	<!--document.getElementById("firstname").style.background="yellow"; -->
+}
+
+
+function passblur()
+{
+	var m=document.getElementById("msg2");
+	var y=document.forms["myform"]["password"].value;
+	var k=document.getElementById("password");
+	var letters = /^[A-Za-z]+$/;
+	var numbers=/^[0-9]+$/;
+	if(myform.elements.password.value.length < 6 || y.match(letters) || y.match(numbers))
+	{
+		m.innerHTML='password must contain 6 characters containg number and alphabets';
+		k.style.borderBottomColor="red";
+		return false;
+	}
+	else
+	{
+		m.style.display='none';
+		m.style.visibility='hidden';
+		k.style.borderBottomColor="blue";
+	}
+}
+function emailblur()
+{
+	var m=document.getElementById("msg3");
+	var em=document.forms["myform"]["email"].value;
+	var z=document.getElementById("email");
+	if(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(myform.email.value))
+	{
+		m.style.display='none';
+		m.style.visibility='hidden';
+		z.style.borderBottomColor="blue";
+	}
+	else
+	{
+		z.style.borderBottomColor="red";
+		m.style.display='block';
+		m.style.visibility='visible';
+		m.innerHTML='invalid emailid';
+	}
+}
+
+
+function ageblur()
+{
+	var v=document.getElementById("age");
+	var vm=document.forms["myform"]["age"].value;
+	var m=document.getElementById("msg4");
+	if(v.value > 90 || v.value< 10)
+	{
+		m.innerHTML='invalid age entered';
+		v.style.borderBottomColor="red";
+	}
+	else
+	{
+		v.style.borderBottomColor="blue";
+		m.style.display='none';
+		m.style.visibility='hidden';
+	}
+}
+function focusfx()
+{
+	<!--document.write("<p>"+myform.elements.firstname.value.length+"</p>");
+	var div=document.getElementById("myform");
+	div.innerHTML=div.innerHTML+'Minimus 6 character required'+myform.elements.firstname.value.length;
+	document.getElementById("firstname").style.background="red";
+}
+</script>
+</head>
+<body>
+<center>
+<fieldset class="field">
+<center>
+<form id="myform" name="myform">
+<p class="texts"> LOGIN PAGE </p>
+<hr />
+<input type="text" class="hell" placeholder="Username" id="firstname" onblur="blurfxn()" onfocus="focusfxn()" /><p id="msg"></p><br />
+<input type="password" class="pass" placeholder="Password" id="password" onblur="passblur()" />
+<p id="msg2"></p><br />
+<input type="email" placeholder="Email" name="email" id="email" onblur="emailblur()" class="hell" />
+<p id="msg3"> </p><br />
+<input type="text" class="hell" placeholder="Age" onblur="ageblur()" id="age" name="age" />
+<p id="msg4"></p><br />
+<hr />
+
+<input type="submit" class="btn" palceholder="Button" onclick="submitClick()" />
+</form>
+</center>
+</fieldset>
+</center>
+</body>
+</html>
